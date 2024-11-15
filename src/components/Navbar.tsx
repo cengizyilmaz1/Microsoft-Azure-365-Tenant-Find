@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
 import { Heart, Moon, Sun } from 'lucide-react';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   return (
     <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-50 backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
@@ -24,11 +24,11 @@ export default function Navbar() {
               {i18n.language === 'en' ? 'TR' : 'EN'}
             </button>
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:scale-105"
-              aria-label={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}
+              aria-label={resolvedTheme === 'dark' ? t('common.lightMode') : t('common.darkMode')}
             >
-              {theme === 'dark' ? (
+              {resolvedTheme === 'dark' ? (
                 <Sun className="h-5 w-5 text-gray-200" />
               ) : (
                 <Moon className="h-5 w-5 text-gray-700" />
