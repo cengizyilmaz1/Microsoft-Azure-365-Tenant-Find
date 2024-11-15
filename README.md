@@ -1,4 +1,8 @@
 # Microsoft Azure & Microsoft 365 Tenant Finder
+Cengiz YILMAZ
+Microsoft MVP
+https://yilmazcengiz.tr
+https://tenant.365gurusu.com
 
 Professional Microsoft Azure and Microsoft 365 tenant lookup tool built with React, TypeScript, and Microsoft Graph API.
 
@@ -22,4 +26,4 @@ Professional Microsoft Azure and Microsoft 365 tenant lookup tool built with Rea
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-username]/tenant-finder.git
+git clone https://github.com/cengizyilmaz1/Microsoft-Azure-365-Tenant-Find.git
