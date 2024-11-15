@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Compress text files
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+
+# Cache control
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|js|css)$">
+Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# Custom 404 page
+ErrorDocument 404 /404.html
+
+# Prevent directory listing
+Options -Indexes
