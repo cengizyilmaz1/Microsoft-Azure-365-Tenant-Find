@@ -1,29 +1,51 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { I18nextProvider } from 'react-i18next';
-import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
-import i18next from 'i18next';
 import App from './App.tsx';
 import './index.css';
-import { translations } from './i18n/translations';
+import './i18n/config';
 
-i18next.init({
-  resources: translations,
-  lng: 'en',
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false
+// Apply theme based on localStorage or system preference
+const applyTheme = () => {
+  const stored = localStorage.getItem('theme');
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const theme = stored || systemTheme;
+  
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
   }
-});
+};
+
+// Apply theme immediately to prevent flash
+applyTheme();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <ThemeProvider attribute="class">
-        <App />
-        <Toaster position="top-right" />
-      </ThemeProvider>
-    </I18nextProvider>
+    <App />
+    <Toaster 
+      position="top-right"
+      toastOptions={{
+        duration: 4000,
+        style: {
+          background: 'var(--toast-bg, #ffffff)',
+          color: 'var(--toast-color, #374151)',
+          border: '1px solid var(--toast-border, #e5e7eb)',
+        },
+        success: {
+          iconTheme: {
+            primary: '#22c55e',
+            secondary: '#ffffff',
+          },
+        },
+        error: {
+          iconTheme: {
+            primary: '#ef4444',
+            secondary: '#ffffff',
+          },
+        },
+      }}
+    />
   </StrictMode>
 );
