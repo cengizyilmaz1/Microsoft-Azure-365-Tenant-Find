@@ -2,7 +2,7 @@
 Cengiz YILMAZ
 Microsoft MVP
 https://cengizyilmaz.net
-https://cengizyilmaz.net/tenant-find
+https://cengizyilmaz.net/mstenant-find
 
 Professional Microsoft Azure and Microsoft 365 tenant lookup tool built with React, TypeScript, and Microsoft Graph API.
 
